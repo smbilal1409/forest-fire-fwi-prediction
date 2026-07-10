@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Forest Fire Weather Index Prediction</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🌲 Forest Fire Weather Index Prediction</h1>
+
+<p>
+Predict the Fire Weather Index using our Machine Learning Model
+</p>
+
+<form action="/dataprediction" method="POST">
+
+<div class="grid">
+
+<div class="input-box">
+<label>Temperature (°C)</label>
+<input type="number" step="any" name="Temperature" required>
+</div>
+
+<div class="input-box">
+<label>Relative Humidity</label>
+<input type="number" step="any" name="RH" required>
+</div>
+
+<div class="input-box">
+<label>Wind Speed</label>
+<input type="number" step="any" name="Ws" required>
+</div>
+
+<div class="input-box">
+<label>Rain</label>
+<input type="number" step="any" name="Rain" required>
+</div>
+
+<div class="input-box">
+<label>FFMC</label>
+<input type="number" step="any" name="FFMC" required>
+</div>
+
+<div class="input-box">
+<label>DMC</label>
+<input type="number" step="any" name="DMC" required>
+</div>
+
+<div class="input-box">
+<label>ISI</label>
+<input type="number" step="any" name="ISI" required>
+</div>
+
+<div class="input-box">
+<label>Classes</label>
+
+<select name="Classes">
+
+<option value="0">Not Fire</option>
+
+<option value="1">Fire</option>
+
+</select>
+
+</div>
+
+<div class="input-box">
+
+<label>Region</label>
+
+<select name="Region">
+
+<option value="0">Bejaia Region</option>
+
+<option value="1">Sidi Bel-Abbes Region</option>
+
+</select>
+
+</div>
+
+</div>
+
+<button class="btn">
+
+Predict FWI
+
+</button>
+
+</form>
+{% if prediction %}
+
+<div class="result-card">
+
+    <h2>🔥 Prediction Result</h2>
+
+    <h1>{{ prediction }}</h1>
+
+    <h3>{{ risk }}</h3>
+
+</div>
+
+{% endif %}
+
+</div>
+
+</body>
+
+</html>
